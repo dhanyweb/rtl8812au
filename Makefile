@@ -34,6 +34,7 @@ endif
 EXTRA_CFLAGS += -Wno-vla
 
 EXTRA_CFLAGS += -I$(src)/include
+EXTRA_CFLAGS += -I$(src)/hal/phydm
 
 EXTRA_LDFLAGS += --strip-debug
 
@@ -268,6 +269,32 @@ _HAL_INTFS_FILES :=	hal/hal_intf.o \
 			hal/hal_mcc.o \
 			hal/hal_hci/hal_$(HCI_NAME).o \
 			hal/led/hal_$(HCI_NAME)_led.o
+			
+_OUTSRC_FILES := hal/phydm/phydm_debug.o	\
+		hal/phydm/phydm_antdiv.o\
+		hal/phydm/phydm_antdect.o\
+		hal/phydm/phydm_interface.o\
+		hal/phydm/phydm_hwconfig.o\
+		hal/phydm/phydm.o\
+		hal/phydm/halphyrf_ce.o\
+		hal/phydm/phydm_edcaturbocheck.o\
+		hal/phydm/phydm_dig.o\
+		hal/phydm/phydm_pathdiv.o\
+		hal/phydm/phydm_rainfo.o\
+		hal/phydm/phydm_dynamicbbpowersaving.o\
+		hal/phydm/phydm_powertracking_ce.o\
+		hal/phydm/phydm_dynamictxpower.o\
+		hal/phydm/phydm_adaptivity.o\
+		hal/phydm/phydm_cfotracking.o\
+		hal/phydm/phydm_noisemonitor.o\
+		hal/phydm/phydm_acs.o\
+		hal/phydm/phydm_beamforming.o\
+		hal/phydm/phydm_dfs.o\
+		hal/phydm/txbf/halcomtxbf.o\
+		hal/phydm/txbf/haltxbfinterface.o\
+		hal/phydm/txbf/phydm_hal_txbf_api.o\
+		hal/phydm/phydm_kfree.o\
+		hal/phydm/phydm_ccx.o			
 
 EXTRA_CFLAGS += -I$(src)/hal/btc
 _BTC_FILES += hal/btc/halbtc8723bwifionly.o \
@@ -291,7 +318,7 @@ _BTC_FILES += hal/btc/halbtc8192e1ant.o \
 				hal/btc/halbtc8821c2ant.o
 endif
 
-include $(TopDIR)/hal/phydm/phydm.mk
+## include $(TopDIR)/hal/phydm/phydm.mk ##
 
 ########### HAL_RTL8812A_RTL8821A #################################
 ifneq ($(CONFIG_RTL8812A)_$(CONFIG_RTL8821A), n_n)
